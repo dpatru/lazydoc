@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>lazydoc</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="style.css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script>
+    <script>!window.jQuery && document.write(unescape('%3Cscript src="jquery.js"%3E%3C/script%3E'))</script>
+
+  <script src='codemirror/js/codemirror.js'></script>
+  <script src='lazydoc.js'></script>
+  <script>$(document).ready(function(){$('textarea.eg').lazydoc();});</script>
+  </head>
+  <body>
+    <header><h1>lazydoc</h1><h2>Lazy documentation for jquery.</h2>
+    </header>
+    <article>
+      <h1>Benefits</h1>
+<p>
+  Lazydoc makes it easy to include interactive examples right in your documentation. This allows the lazy reader to play with your work without having to download and setup anything.
+</p>
+    </article>
+
+    <article>
+      <h1>lazydoc() <span class="returns">Returns: <a href="http://docs.jquery.com/Types#jQuery">jQuery</a></span></h1>
+<p>
+  Lazydoc replaces each element in the jQuery object with a <a href="http://codemirror.net/">codemirror</a> frame. After each codemirror frame, lazydoc inserts 2 buttons (update and reset height & width) and another iframe to hold the output.
+</p>
+<p>
+    The update button updates the output. The reset height & width button resets the height and width of the output frame as this is not always set correctly at first.
+</p>
+<h2>Example: calling with default arguments.</h2>
+<p class="eg">
+      <textarea class="eg">
+	&lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js&quot;&gt;&lt;/script&gt;
+	&lt;script&gt;!window.jQuery &amp;&amp; document.write(unescape(&apos;%3Cscript src=&quot;jquery.js&quot;%3E%3C/script%3E&apos;))&lt;/script&gt;
+	&lt;script src=&apos;codemirror/js/codemirror.js&apos;&gt;&lt;/script&gt;
+	&lt;script src=&apos;lazydoc.js&apos;&gt;&lt;/script&gt;
+	&lt;script&gt; $(document).ready(function(){ $(&apos;textarea.eg&apos;).lazydoc();}) &lt;/script&gt;
+
+	&lt;textarea class=&quot;eg&quot;&gt;
+	  &amp;lt;h1&amp;gt;header&amp;lt;/h1&amp;gt;
+	  &amp;lt;p&amp;gt;Hi there!&amp;lt;/p&amp;gt;
+	&lt;/textarea&gt;
+      </textarea>	
+</p>
+
+    </article>
+  </body>
+</html>
+

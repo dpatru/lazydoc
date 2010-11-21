@@ -1,0 +1,44 @@
+input.invalid {outline: 2px solid red;}
+input.invalid + span:after {content: ' invalid'}
+input.valid + span:after {content: ' valid'}
+
+input.invalid, textarea.invalid {
+  background-image: url("images/cross.png");
+}
+input.valid, textarea.valid {
+  background-image: url(images/accept.png);
+}
+input, textarea {
+  background-position: right top;
+  background-repeat: no-repeat;
+}
+
+label, input, textarea {display:block}
+label {margin-bottom: 5px;}
+
+.error {color: red}
+
+body {
+    background: #FAFAFA; 
+    color: #444; 
+    font-family: 'Trebuchet MS', Verdana, Helvetica, Arial, sans-serif;
+    padding:0;
+    margin:0;
+    font-size: 100%
+}
+
+header h1, header h2, header h3 {text-align: center;}
+article {max-width: 35em; margin: 0 auto;}
+pre {overflow: auto; display:block }
+article, article h1 {display:block; padding: 5px 20px;}
+article h1 {font-size:100%; background: #0D5995; color: white; margin: 0 -20px 5px -20px; }
+article h1 .returns {float:right; font-style: italic; }
+article h1 a {color: white}
+
+.CodeMirror-wrapping {outline: 1px solid green; padding: 1em;}
+.output {outline: 1px solid gray}
+
+.ui-tabs .ui-tabs-hide {
+    position: absolute;
+    left: -10000px;
+}
