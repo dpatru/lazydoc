@@ -1,3 +1,3 @@
 
 See the [documentation][doc_src].
-  [doc_src]: https://dpatru.github.com/lazydoc
+  [doc_src]: http://dpatru.github.com/lazydoc
