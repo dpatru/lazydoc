@@ -19,6 +19,32 @@
 <p>
   Lazydoc makes it easy to include interactive examples right in your documentation. This allows the lazy reader to play with your work without having to download and setup anything.
 </p>
+<p>
+  To use, checkout a copy of <a href="https://github.com/marijnh/CodeMirror">codemirror</a> into your root directory as well as a copy of lazydoc. Then simply import lazydoc.js in your html page and call lazydoc on the elements you want transformed. Lazydoc will automatically get the codemirror script if it's not already loaded. Here's an example of a documentation file.
+<p>
+<textarea class="eg"> 
+&lt;script src=&quot;jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;codemirror/js/codemirror.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;lazydoc.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+  $(document).ready(function() { 
+     $(&apos;textarea.example&apos;).lazydoc(); 
+  }) 
+&lt;/script&gt;
+&lt;h1&gt;Example documentation&lt;/h1&gt;
+&lt;p&gt; Use jquery like this:&lt;/p&gt;
+&lt;textarea class=&quot;example&quot;&gt; 
+&lt;script src=&quot;jquery.js&quot;&gt;&lt;/script&gt;
+&lt;button&gt;Say hello&lt;/button&gt;
+&lt;script&gt;
+  $(&apos;button&apos;).click(function(){
+     alert(&apos;hello&apos;); 
+     return false;
+  });
+&lt;/script&gt;
+&lt;/textarea&gt;
+</textarea>
+</p>
     </article>
 
     <article>

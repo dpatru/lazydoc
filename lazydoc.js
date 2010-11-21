@@ -16,9 +16,9 @@
      };
      var global_i = 0;
      function codeMirrorize(){
-	 var el = this, i = global_i++;
+	 var el = this, $el = $(el), i = global_i++;
 	 var html_id = 'html'+i;
-	 $(el).after('<button class="update '+html_id+'">Reload html</button><button class="setHeight '+html_id+'">Reset height & width</button><br/><iframe class="output" src="javascript:;" height="0px" id="'+html_id+'"></iframe>');
+	 $(el).after('<button class="lazydoc update '+html_id+'">Reload html</button><button class="lazydoc setHeight '+html_id+'">Reset height & width</button><br/><iframe class="lazydoc output" src="javascript:;" height="0px" id="'+html_id+'"></iframe>');
 	 var html_el = $('#'+html_id)[0], editor;
 	 var codeMirrorOptions = {
 	     parserfile: ["parsexml.js", "parsecss.js", "tokenizejavascript.js", "parsejavascript.js", "parsehtmlmixed.js"],
@@ -33,7 +33,8 @@
 		 $('button.setHeight.'+html_id).click(setHeight);
 	     },
 	     iframeClass: 'source',
-	     minHeight: '10'
+	     minHeight: '10',
+	     content: $el.is(':input')? $el.val(): $el.html()
 	 };
 	 function setHeight(){
 	     //var height = $(html_el).contents().find('html').outerHeight();
@@ -54,12 +55,12 @@
 	     setHeight();
 	 };
 	 function update_html(){
-	     setContent('<!doctype html><head><title>Empty</title></head><div></div>');
+	     setContent('<!doctype html><head><title>Empty</title></head><div></div>'); // reset the content, otherwise it will not shrink.
 	     setContent(editor.getCode());
 	     $('button.update.'+html_id).attr('disabled', true); // disable the update button because the iframe has already been updated.
 	 };
-	 return $(el).is('textarea')? CodeMirror.fromTextArea(el, codeMirrorOptions): 
-	     (new CodeMirror(($(el).is(':input')? CodeMirror.replace(el): el), codeMirrorOptions));
+	 return $el.is('textarea')? CodeMirror.fromTextArea(el, codeMirrorOptions): 
+	     (new CodeMirror(($el.is(':input')? CodeMirror.replace(el): el), codeMirrorOptions));
      };
      $.fn.lazydoc = lazydoc; 
 
