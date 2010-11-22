@@ -27,7 +27,9 @@
 	     path: "codemirror/js/",
 	     stylesheet: ["codemirror/css/xmlcolors.css", "codemirror/css/jscolors.css", "codemirror/css/csscolors.css"],
 	     height:"dynamic",
-	     onChange: function(){$('button.'+html_id).attr('disabled', false);},
+	     onChange: function(){
+		 //$('button.'+html_id).attr('disabled', false);
+	     },
 	     onLoad: function (ed) { 
 		 editor = ed; // set the editor (the global editor variable is not set yet.)
 		 update_html();
@@ -59,7 +61,7 @@
 	     html_el = $('#'+html_id)[0];
 	     setContent('<!doctype html><head><title>Empty</title></head><div></div>'); // reset the content, otherwise it will not shrink.
 	     setContent(editor.getCode());
-	     $('button.update.'+html_id).attr('disabled', true); // disable the update button because the iframe has already been updated.
+	     //$('button.update.'+html_id).attr('disabled', true); // disable the update button because the iframe has already been updated.
 	 };
 	 return $el.is('textarea')? CodeMirror.fromTextArea(el, codeMirrorOptions): 
 	     (new CodeMirror(($el.is(':input')? CodeMirror.replace(el): el), codeMirrorOptions));
