@@ -18,8 +18,10 @@
      function codeMirrorize(){
 	 var el = this, $el = $(el), i = global_i++;
 	 var html_id = 'html'+i;
-	 $(el).after('<button class="lazydoc update '+html_id+'">Reload html</button><button class="lazydoc setHeight '+html_id+'">Reset height & width</button><br/><iframe class="lazydoc output" src="javascript:;" height="0px" id="'+html_id+'"></iframe>');
-	 var html_el = $('#'+html_id)[0], editor;
+	 $(el).after('<button class="lazydoc update '+html_id+'">Reload html</button><button class="lazydoc setHeight '+html_id+'">Reset height & width</button><br/><div id="'+html_id+'"></div>');
+	 $('button.update.'+html_id).click(update_html);
+	 $('button.setHeight.'+html_id).click(setHeight);
+	 var html_el, editor;
 	 var codeMirrorOptions = {
 	     parserfile: ["parsexml.js", "parsecss.js", "tokenizejavascript.js", "parsejavascript.js", "parsehtmlmixed.js"],
 	     path: "codemirror/js/",
@@ -29,8 +31,6 @@
 	     onLoad: function (ed) { 
 		 editor = ed; // set the editor (the global editor variable is not set yet.)
 		 update_html();
-		 $('button.update.'+html_id).click(update_html);
-		 $('button.setHeight.'+html_id).click(setHeight);
 	     },
 	     iframeClass: 'source',
 	     minHeight: '10',
@@ -55,6 +55,8 @@
 	     setHeight();
 	 };
 	 function update_html(){
+	     $('#'+html_id).replaceWith('<iframe class="lazydoc output" src="javascript:;" height="0px" id="'+html_id+'"></iframe>');
+	     html_el = $('#'+html_id)[0];
 	     setContent('<!doctype html><head><title>Empty</title></head><div></div>'); // reset the content, otherwise it will not shrink.
 	     setContent(editor.getCode());
 	     $('button.update.'+html_id).attr('disabled', true); // disable the update button because the iframe has already been updated.
